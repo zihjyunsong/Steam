@@ -1,7 +1,8 @@
 /* ===== i18n strings ===== */
 const I18N = {
   zh: {
-    title: "Steam 遊戲統計",
+    title: "我的遊戲收藏統計",
+    disclaimer: "個人遊戲收藏紀錄 · 非官方頁面，與 Valve / Steam 無關。本頁僅顯示個人遊玩數據，不會要求或收集任何登入、密碼、付款等個人資訊。",
     level: "等級", years: "年資", yearUnit: "年",
     avgPrice: "平均單價",
     totalHours: "總遊玩時數",
@@ -14,10 +15,11 @@ const I18N = {
     countTpl: (n,t)=>`顯示 ${n} / ${t} 款遊戲`,
     cName:"遊戲名稱", cPrice:"價格", cTime:"時數", cRating:"評價",
     free:"免費", noPrice:"無價格", never:"未遊玩",
-    foot: a=>`Steam ID ${a.steamId} · 公開資料擷取自 steamdb.info/calculator（cc=tw）· 擷取日期 ${a.captured}<br>點擊遊戲名稱可開啟該遊戲的 Steam 商店頁。價格以新台幣 (NT$) 計。「今日購入總價」為現價加總，「史低總價」為 SteamDB 紀錄之歷史最低價加總。項目總數 ${a.entries} 含 ${a.gamesTotal} 款遊戲與 ${a.entries-a.gamesTotal} 個應用程式（DisplayFusion、CPUCores、Controller Companion），故「已遊玩遊戲比例」以 ${a.gamesTotal} 款遊戲為分母。`
+    foot: a=>`非官方個人頁面，與 Valve / Steam 無關。Steam ID ${a.steamId} · 公開資料擷取自 steamdb.info/calculator（cc=tw）· 擷取日期 ${a.captured}<br>點擊遊戲名稱可開啟該遊戲的 Steam 商店頁。價格以新台幣 (NT$) 計。「今日購入總價」為現價加總，「史低總價」為 SteamDB 紀錄之歷史最低價加總。項目總數 ${a.entries} 含 ${a.gamesTotal} 款遊戲與 ${a.entries-a.gamesTotal} 個應用程式（DisplayFusion、CPUCores、Controller Companion），故「已遊玩遊戲比例」以 ${a.gamesTotal} 款遊戲為分母。`
   },
   en: {
-    title: "Steam Library Stats",
+    title: "My Game Collection",
+    disclaimer: "A personal record of one player's game collection · Unofficial — not affiliated with, endorsed by, or connected to Valve or Steam. This page only displays personal play data and never asks for or collects any login, password, payment, or other personal information.",
     level: "Level", years: "Member for", yearUnit: "yrs",
     avgPrice: "Average price",
     totalHours: "Hours on record",
@@ -30,7 +32,7 @@ const I18N = {
     countTpl: (n,t)=>`Showing ${n} of ${t} games`,
     cName:"Name", cPrice:"Price", cTime:"Time", cRating:"Rating",
     free:"Free", noPrice:"No price", never:"Never played",
-    foot: a=>`Steam ID ${a.steamId} · Public data from steamdb.info/calculator (cc=tw) · captured ${a.captured}<br>Click a game name to open its Steam store page. Prices in NT$. "Price today" = sum of current prices; "Lowest total" = sum of lowest recorded prices on SteamDB. The ${a.entries} total entries cover ${a.gamesTotal} games and ${a.entries-a.gamesTotal} apps (DisplayFusion, CPUCores, Controller Companion), so "Games played" uses ${a.gamesTotal} games as the denominator.`
+    foot: a=>`Unofficial personal page, not affiliated with Valve or Steam. Steam ID ${a.steamId} · Public data from steamdb.info/calculator (cc=tw) · captured ${a.captured}<br>Click a game name to open its Steam store page. Prices in NT$. "Price today" = sum of current prices; "Lowest total" = sum of lowest recorded prices on SteamDB. The ${a.entries} total entries cover ${a.gamesTotal} games and ${a.entries-a.gamesTotal} apps (DisplayFusion, CPUCores, Controller Companion), so "Games played" uses ${a.gamesTotal} games as the denominator.`
   }
 };
 
