@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Steam Calculator · ifonlyliftime</title>
+<meta name="description" content="Steam game library & playtime stats — 中英對照">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+
+  <div class="topbar">
+    <div class="brand"><span class="logo">S</span><span data-i18n="title">Steam 遊戲統計</span></div>
+    <div class="lang-toggle" id="langToggle">
+      <button data-lang="zh" class="active">中文</button>
+      <button data-lang="en">EN</button>
+    </div>
+  </div>
+
+  <div class="account" id="account"></div>
+
+  <div class="controls">
+    <input type="search" id="search" autocomplete="off">
+    <select id="filter">
+      <option value="all"></option>
+      <option value="played"></option>
+      <option value="unplayed"></option>
+    </select>
+    <span class="count" id="count"></span>
+  </div>
+
+  <div class="table-wrap">
+    <table id="games">
+      <thead><tr id="head"></tr></thead>
+      <tbody id="body"></tbody>
+    </table>
+  </div>
+
+  <div class="foot" id="foot"></div>
+
+</div>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

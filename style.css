@@ -1,0 +1,112 @@
+:root{
+  --bg:#1b2838;
+  --bg2:#16202d;
+  --panel:#22303f;
+  --panel2:#2a3a4c;
+  --row:#1e2a38;
+  --row-alt:#22303f;
+  --line:#32404f;
+  --text:#c7d5e0;
+  --muted:#7f93a6;
+  --accent:#66c0f4;
+  --green:#a4d007;
+  --green-dim:#8bb600;
+  --gold:#e5c100;
+  --shadow:rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  background:linear-gradient(180deg,#1b2838 0%,#16202d 100%);
+  color:var(--text);
+  font-family:"Segoe UI","Microsoft JhengHei","PingFang TC",-apple-system,Roboto,Helvetica,Arial,sans-serif;
+  font-size:15px;line-height:1.45;-webkit-font-smoothing:antialiased;
+}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+.wrap{max-width:1080px;margin:0 auto;padding:18px 16px 60px}
+
+/* ---- Top bar ---- */
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:18px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:18px;letter-spacing:.3px}
+.brand .logo{width:30px;height:30px;border-radius:6px;background:linear-gradient(135deg,#1387b8,#66c0f4);display:flex;align-items:center;justify-content:center;color:#0b1620;font-weight:800}
+.lang-toggle{display:flex;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.lang-toggle button{background:transparent;color:var(--muted);border:0;padding:7px 14px;cursor:pointer;font-size:13px;font-weight:600}
+.lang-toggle button.active{background:var(--accent);color:#0b1620}
+
+/* ---- Account header ---- */
+.account{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:18px;box-shadow:0 2px 10px var(--shadow);margin-bottom:16px}
+.account-top{display:flex;align-items:center;gap:16px;flex-wrap:wrap;justify-content:space-between}
+.acc-id{display:flex;align-items:center;gap:14px}
+.avatar{width:64px;height:64px;border-radius:10px;object-fit:cover;flex:0 0 auto;box-shadow:0 1px 4px rgba(0,0,0,.45);background:#0e1722}
+.acc-name{font-size:22px;font-weight:700;color:#fff}
+.acc-sub{color:var(--muted);font-size:13px}
+.acc-value{text-align:right}
+.acc-value .label{color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.5px}
+.acc-value .num{color:var(--green);font-size:30px;font-weight:800}
+
+/* ---- Stat grid ---- */
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-top:16px}
+.stat{background:var(--bg2);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+.stat .k{color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.4px}
+.stat .v{font-size:19px;font-weight:700;color:#fff;margin-top:3px}
+.stat .v small{font-size:12px;color:var(--muted);font-weight:500}
+
+/* progress */
+.played-bar{margin-top:14px}
+.played-bar .meta{display:flex;justify-content:space-between;font-size:13px;color:var(--muted);margin-bottom:5px}
+.bar{height:8px;border-radius:6px;background:#0e1722;overflow:hidden}
+.bar > span{display:block;height:100%;background:linear-gradient(90deg,#5a9b1e,#a4d007)}
+
+/* ---- Controls ---- */
+.controls{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:18px 0 10px}
+.controls input[type=search]{flex:1;min-width:180px;background:var(--bg2);border:1px solid var(--line);border-radius:8px;color:var(--text);padding:10px 12px;font-size:14px}
+.controls input[type=search]:focus{outline:none;border-color:var(--accent)}
+.controls select{background:var(--bg2);border:1px solid var(--line);border-radius:8px;color:var(--text);padding:9px 10px;font-size:13px}
+.count{color:var(--muted);font-size:13px;margin-left:auto}
+
+/* ---- Table ---- */
+.table-wrap{background:var(--panel);border:1px solid var(--line);border-radius:12px;overflow:hidden;box-shadow:0 2px 10px var(--shadow)}
+table{width:100%;border-collapse:collapse;font-size:14px}
+thead th{background:var(--bg2);color:var(--muted);text-align:left;padding:11px 12px;font-size:12px;text-transform:uppercase;letter-spacing:.4px;cursor:pointer;user-select:none;white-space:nowrap;border-bottom:1px solid var(--line)}
+thead th.num{text-align:right}
+thead th .arrow{opacity:.4;font-size:10px;margin-left:3px}
+thead th.sorted{color:var(--accent)}
+thead th.sorted .arrow{opacity:1}
+tbody td{padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:middle}
+tbody tr:nth-child(even){background:var(--row-alt)}
+tbody tr:hover{background:#2c3e52}
+td.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.idx{color:var(--muted);font-size:12px;width:34px;text-align:right}
+.gname-cell .cell-inner{display:flex;align-items:center;gap:11px}
+.gicon{flex:0 0 auto;width:88px;height:33px;border-radius:4px;object-fit:cover;background:#0e1722;box-shadow:0 1px 3px rgba(0,0,0,.4)}
+.gname{font-weight:600;color:#dfe9f2}
+.gname .sub{display:block;font-weight:400;font-size:12px;color:var(--muted)}
+.muted{color:var(--muted)}
+.free{color:var(--green);font-weight:600}
+.rating{font-weight:600}
+.r-hi{color:#a4d007}.r-mid{color:#e5c100}.r-lo{color:#e08a3c}.r-vlo{color:#d05a5a}
+.pill{display:inline-block;font-size:11px;padding:1px 7px;border-radius:10px;border:1px solid var(--line);color:var(--muted)}
+
+/* footer */
+.foot{color:var(--muted);font-size:12px;text-align:center;margin-top:18px;line-height:1.7}
+
+/* ---- Mobile ---- */
+@media (max-width:640px){
+  body{font-size:14px}
+  .acc-value{text-align:left;width:100%}
+  .acc-value .num{font-size:26px}
+  .count{width:100%;margin:4px 0 0}
+  thead{display:none}
+  table,tbody,tr,td{display:block;width:100%}
+  tbody tr{padding:10px 12px;border-bottom:1px solid var(--line)}
+  tbody tr:nth-child(even){background:transparent}
+  tbody tr:hover{background:transparent}
+  td{border:0;padding:2px 0;display:flex;justify-content:space-between;gap:12px;text-align:right}
+  td.idx{display:none}
+  td.gname-cell{justify-content:flex-start;text-align:left;margin-bottom:8px}
+  td::before{content:attr(data-label);color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.3px;text-align:left}
+  td.gname-cell::before{content:none}
+  .gicon{width:120px;height:45px}
+  td.num{text-align:right}
+}
