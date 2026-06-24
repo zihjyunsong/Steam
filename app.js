@@ -14,7 +14,7 @@ const I18N = {
     countTpl: (n,t)=>`顯示 ${n} / ${t} 款遊戲`,
     cName:"遊戲名稱", cPrice:"價格", cTime:"時數", cRating:"評價",
     free:"免費", noPrice:"無價格", never:"未遊玩",
-    foot: a=>`Steam ID ${a.steamId} · 公開資料擷取自 steamdb.info/calculator（cc=tw）· 擷取日期 ${a.captured}<br>價格以新台幣 (NT$) 計。「今日購入總價」為現價加總，「史低總價」為 SteamDB 紀錄之歷史最低價加總。項目總數 ${a.entries} 含 ${a.gamesTotal} 款遊戲與 ${a.entries-a.gamesTotal} 個應用程式（DisplayFusion、CPUCores、Controller Companion），故「已遊玩遊戲比例」以 ${a.gamesTotal} 款遊戲為分母。`
+    foot: a=>`Steam ID ${a.steamId} · 公開資料擷取自 steamdb.info/calculator（cc=tw）· 擷取日期 ${a.captured}<br>點擊遊戲名稱可開啟該遊戲的 Steam 商店頁。價格以新台幣 (NT$) 計。「今日購入總價」為現價加總，「史低總價」為 SteamDB 紀錄之歷史最低價加總。項目總數 ${a.entries} 含 ${a.gamesTotal} 款遊戲與 ${a.entries-a.gamesTotal} 個應用程式（DisplayFusion、CPUCores、Controller Companion），故「已遊玩遊戲比例」以 ${a.gamesTotal} 款遊戲為分母。`
   },
   en: {
     title: "Steam Library Stats",
@@ -30,7 +30,7 @@ const I18N = {
     countTpl: (n,t)=>`Showing ${n} of ${t} games`,
     cName:"Name", cPrice:"Price", cTime:"Time", cRating:"Rating",
     free:"Free", noPrice:"No price", never:"Never played",
-    foot: a=>`Steam ID ${a.steamId} · Public data from steamdb.info/calculator (cc=tw) · captured ${a.captured}<br>Prices in NT$. "Price today" = sum of current prices; "Lowest total" = sum of lowest recorded prices on SteamDB. The ${a.entries} total entries cover ${a.gamesTotal} games and ${a.entries-a.gamesTotal} apps (DisplayFusion, CPUCores, Controller Companion), so "Games played" uses ${a.gamesTotal} games as the denominator.`
+    foot: a=>`Steam ID ${a.steamId} · Public data from steamdb.info/calculator (cc=tw) · captured ${a.captured}<br>Click a game name to open its Steam store page. Prices in NT$. "Price today" = sum of current prices; "Lowest total" = sum of lowest recorded prices on SteamDB. The ${a.entries} total entries cover ${a.gamesTotal} games and ${a.entries-a.gamesTotal} apps (DisplayFusion, CPUCores, Controller Companion), so "Games played" uses ${a.gamesTotal} games as the denominator.`
   }
 };
 
@@ -56,6 +56,14 @@ function gameSub(g){
   const primary = gameName(g);
   const other = lang==="zh" ? g.en : g.zh;
   return other && other!==primary ? other : "";
+}
+
+// Steam store page for a game. Uses store search by name, which lands on the
+// exact game (works without needing per-game appids). Strips parenthetical
+// translations and trademark symbols for the cleanest match.
+function storeUrl(g){
+  const term = g.en.replace(/\s*\([^)]*\)\s*/g," ").replace(/[™®©]/g,"").replace(/\s+/g," ").trim();
+  return "https://store.steampowered.com/search/?term="+encodeURIComponent(term);
 }
 
 function priceCell(g){
@@ -154,7 +162,8 @@ function renderBody(){
       + '<td class="idx">'+(i+1)+'</td>'
       + '<td class="gname-cell"><span class="cell-inner">'
         + '<img class="gicon" loading="lazy" src="'+g.icon+'" alt="" onerror="this.style.visibility=\'hidden\'">'
-        + '<span class="gname">'+gameName(g)+subHtml+'</span></span></td>'
+        + '<a class="gname" href="'+storeUrl(g)+'" target="_blank" rel="noopener"><span class="gname-text">'+gameName(g)+'</span>'+subHtml+'</a>'
+      + '</span></td>'
       + '<td class="num" data-label="'+t.cPrice+'">'+priceCell(g)+'</td>'
       + '<td class="num" data-label="'+t.cTime+'">'+timeCell(g)+'</td>'
       + '<td class="num" data-label="'+t.cRating+'"><span class="rating '+ratingClass(g.r)+'">'+g.r.toFixed(2)+'%</span></td>'
